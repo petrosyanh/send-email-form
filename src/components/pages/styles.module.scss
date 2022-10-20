@@ -1,0 +1,39 @@
+.not-found {
+  padding: 50px;
+  h1{
+    text-align: center;
+    font-size: 120px;
+    line-height: 150px;
+    .fade-in {
+      animation: fadeIn 2s ease infinite;
+    }
+    .digit1 {
+      animation-delay: 200ms;
+      color:  #388AF3;
+    }
+    .digit2 {
+      animation-delay: 300ms;
+      color: #A483E2;
+    }
+    .digit3 {
+      animation-delay: 400ms;
+      color:  #388AF3;
+
+    }
+  }
+  p{
+    font-size: 72px;
+    line-height: 80px;
+    color: #A483E2;
+    text-align: center;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

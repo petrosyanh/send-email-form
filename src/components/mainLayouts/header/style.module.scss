@@ -1,0 +1,261 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.app-header {
+  width: 100%;
+  max-width: 100%;
+  padding: 49px 0 38px 0;
+
+  @media only screen and (max-width: $laptop) {
+    padding-top: 34px;
+    padding-bottom: 23px;
+  }
+
+  .app-brand {
+    a {
+      display: block;
+      @include fontRem(40, 800, 50);
+      color: $link;
+      text-decoration: none;
+
+      @media only screen and (max-width: $mobile) {
+        @include fontRem(30, 800, 37);
+      }
+    }
+  }
+
+  .app-header-mainpanel {
+    @include flex-center-vert;
+    justify-content: space-between;
+    position: relative;
+    .user-action-overlay{
+      flex: 1;
+      @include d-flex;
+      justify-content: space-between;
+      @media only screen and (max-width: $laptop) {
+        transform: translateX(110%);
+        position: absolute;
+        top: 96px;
+        right: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        background-color: #fff;
+        z-index: 999;
+        min-height: calc(100vh - 96px);
+        padding-bottom: 80px;
+        transition: 1s;
+        &.show{
+          transform: translateX(0);
+          transition: 1s;
+        }
+      }
+      .app-navigation {
+        margin-left: auto;
+        margin-right: auto;
+        @include flex-center;
+        ul {
+          @include flex-center-vert;
+          @media only screen and (max-width: $laptop) {
+            flex-direction: column;
+          }
+          li {
+            &:not(:last-child) {
+              margin-right: 50px;
+              @media only screen and (max-width: $laptop) {
+                margin-right: 0px;
+              }
+            }
+            @media only screen and (max-width: $laptop){
+              &:not(:first-child){
+                margin-top: 15px;
+              }
+            }
+
+            a {
+              color: $text;
+              @include fontRem(18, 600, 21);
+              position: relative;
+              padding-bottom: 11px;
+              display: inline-block;
+              text-decoration: none;
+
+              &.active {
+                color: $blue;
+                font-weight: 700;
+
+                &:after {
+                  content: "";
+                  width: 7px;
+                  height: 7px;
+                  @include absoluteCenter(horizontal);
+                  background-color: $blue;
+                  bottom: 0;
+                  border-radius: 50%;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .user-actions {
+        @include flex-center-vert;
+        @media only screen and (max-width: $laptop) {
+          flex-direction: column;
+          margin-top: auto;
+        }
+        .language-switcher {
+          @include flex-center-vert;
+          margin-right: 60px;
+          @media only screen and (max-width: $laptop) {
+            margin-right: 0px;
+          }
+          ul {
+            @include flex-center-vert;
+
+            li {
+              @include fontRem(16, 600, 19);
+              color: $gray;
+              position: relative;
+              padding-bottom: 11px;
+              cursor: pointer;
+              &:not(:last-child) {
+                margin-right: 15px;
+              }
+
+              &.active {
+                color: $blue;
+
+                &:after {
+                  content: "";
+                  width: 7px;
+                  height: 7px;
+                  @include absoluteCenter(horizontal);
+                  background-color: $blue;
+                  bottom: 0;
+                  border-radius: 50%;
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+
+
+    .header-button {
+      .button-overlay {
+        padding: 20px 0;
+        @media only screen and (max-width: $laptop) {
+          margin-top: 15px;
+        }
+        a {
+          display: inline-block;
+          @include fontRem(16, 700, 20);
+          color: $blue;
+          position: relative;
+          padding-right: 38px;
+          text-decoration: none;
+          z-index: 2;
+          transition: 2s;
+          &:hover{
+            transition: 2s;
+            &:before{
+              animation-name: move;
+              animation-duration: 1s;
+              animation-iteration-count: infinite;
+              animation-direction: alternate;
+
+            }
+            &:after {
+              animation-name: scaled;
+              animation-duration: 1s;
+              animation-iteration-count: infinite;
+              animation-direction: alternate;
+            }
+          }
+          &:after {
+            content: "";
+            @include absoluteCenter(vertical);
+            right: 0;
+            width: 61px;
+            height: 61px;
+            background-color: transparent;
+            border: 1px solid #E2E2E2;
+            border-radius: 50%;
+            z-index: -1;
+            transition: 2s;
+
+          }
+
+          &:before {
+            content: " ";
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='15' height='14' viewBox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 8L12 8V6H11V8ZM0 8L11 8V6L0 6L0 8Z' fill='%23388AF3'/%3E%3Cpath d='M7 13L13 7L7 1' stroke='%23388AF3' stroke-width='2'/%3E%3C/svg%3E");
+            width: 13px;
+            height: 12px;
+            @include absoluteCenter(vertical);
+            right: 15px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: 2s;
+
+          }
+        }
+      }
+
+    }
+  }
+
+  .mobile-button {
+    display: none;
+
+    @media only screen and (max-width: $laptop) {
+      display: block;
+    }
+
+    button {
+      @include buttonNulled;
+      @include flex-center-vert;
+      padding: 0 7px;
+      .circle {
+        width: 7px;
+        height: 7px;
+        background-color: $blue;
+        border-radius: 50%;
+        display: inline-block;
+        transition: 1s;
+        &:last-child {
+          transform: translateX(5px);
+        }
+        &:first-child {
+          transform: translateX(-5px);
+        }
+      }
+      &.opened{
+        justify-content: center;
+        .circle {
+          transition: 0.3s;
+          transform: translateX(0px);
+          &.centered{
+            transform: scale(2.2);
+            position: relative;
+            z-index: 9;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes move {
+  0%   {transform: translate(0,-50%)}
+  100% {transform: translate(15px,-50%)}
+}
+@keyframes scaled {
+  0%   {transform: scale(0.9) translateY(-50%)}
+  100% {transform: scale(1) translateY(-50%)}
+}

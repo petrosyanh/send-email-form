@@ -1,0 +1,219 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.form-section {
+  padding-top: 61px;
+  padding-bottom: 162px;
+  overflow: hidden;
+  @media only screen and (max-width: $laptop) {
+    padding-bottom: 100px
+  }
+
+  @media only screen and (max-width: $laptop) {
+    padding-top: 57px
+  }
+
+  .section-headline {
+    max-width: 553px;
+    width: 100%;
+
+    @media only screen and (max-width: $laptop) {
+      max-width: 519px;
+    }
+
+    .section-heading {
+      * {
+        @include fontRem(80, 700, 120);
+        color: $blue;
+
+        @media only screen and (max-width: $laptop) {
+          font-size: 60px;
+        }
+
+        @media only screen and (max-width: $laptop) {
+          @include fontRem(40, 700, 40);
+        }
+      }
+    }
+
+    .section-description {
+      @media only screen and (max-width: $laptop) {
+        margin-top: 22px;
+      }
+
+      * {
+        color: $text;
+        @include fontRem(20, 400, 30);
+
+        @media only screen and (max-width: $laptop) {
+          font-size: 16px;
+        }
+      }
+
+      a {
+        color: $blue;
+      }
+    }
+  }
+
+  .form-overlay {
+    .form-mainpanel {
+      @include d-flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      @media only screen and (max-width: $laptop) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .form-inner {
+        max-width: 741px;
+        width: 100%;
+        padding-top: 97px;
+        @include d-flex;
+        justify-content: space-between;
+
+        @media only screen and (max-width: $laptop) {
+          padding-top: 79px;
+        }
+
+        .form-group {
+          position: relative;
+          padding-bottom: 25px;
+          & > span{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+          }
+          input:focus+label,
+          input:invalid+label,{
+            transition: all .3s ease;
+            @include fontRem(16, 300, 18);
+            transform: translateY(-48px);
+
+            @media only screen and (max-width: $laptop) {
+              font-size: 14px;
+              line-height: 16px;
+            }
+          }
+          label {
+            display: inline-block;
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            color: $lightGray;
+            @include fontRem(26, 300, 31);
+            transition: all .3s ease;
+            transform: translateY(-24px);
+            @media only screen and (max-width: $tablet) {
+              @include fontRem(22, 300, 26);
+            }
+
+            span {
+              color: $red;
+            }
+          }
+          input {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            border: none;
+            border-bottom: 1px solid $lightGray;
+            padding-bottom: 4px;
+            &.filled + label{
+              transition: all .3s ease;
+              @include fontRem(16, 300, 18);
+              transform: translateY(-48px);
+            }
+          }
+
+          &.name-place {
+            max-width: 433px;
+            width: 100%;
+
+            @media only screen and (max-width: $tablet) {
+              max-width: 100%;
+            }
+          }
+
+          &.email-place {
+            max-width: 278px;
+            width: 100%;
+
+            @media only screen and (max-width: $tablet) {
+              max-width: 100%;
+              margin-top: 60px;
+            }
+          }
+        }
+
+        .comments {
+          width: 100%;
+          max-width: 100%;
+          margin-top: 64px;
+
+          @media only screen and (max-width: $laptop) {
+            margin-top: 60px;
+          }
+
+          label {
+            @include fontRem(26, 300, 31);
+            color: $lightGray;
+
+            @media only screen and (max-width: $tablet) {
+              @include fontRem(22, 300, 26);
+            }
+
+            span {
+              color: $red;
+            }
+          }
+
+          textarea {
+            display: block;
+            border: none;
+            outline: none;
+            width: 100%;
+            border-bottom: 1px solid $lightGray;
+            resize: none;
+            min-height: 60px;
+          }
+        }
+
+        .terms {
+          @include d-flex;
+          align-items: center;
+          margin-top: 30px;
+
+          @media only screen and (max-width: $tablet) {
+            align-items: flex-start;
+          }
+
+          input {
+            display: block;
+            width: 30px;
+            margin-right: 20px;
+            height: 30px;
+          }
+
+          label {
+            display: block;
+            @include fontRem(18, 400, 27);
+            color: $term;
+
+            @media only screen and (max-width: $tablet) {
+              max-width: 191px;
+              width: 100%;
+            }
+
+            a {
+              color: $blue;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

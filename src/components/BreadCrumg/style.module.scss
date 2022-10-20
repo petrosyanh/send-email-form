@@ -1,0 +1,38 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.section-breadCrumb {
+  padding-top: 100px;
+
+  @media only screen and (max-width: $laptop) {
+    padding-top: 75px;
+  }
+
+  @media only screen and (max-width: $laptop) {
+    padding-top: 62px;
+  }
+
+  .breadCrumb-listing {
+    ul {
+      @include flex-center-vert;
+
+      li {
+        a {
+          @include fontRem(18, 500, 21);
+          color: $link;
+          text-decoration: none;
+
+          @media only screen and (max-width: $laptop) {
+            @include fontRem(14, 500, 12);
+          }
+        }
+
+        &.prev {
+          a {
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
+}
